@@ -1,0 +1,13 @@
+services:
+  github-stats:
+    image: denoland/deno:2.6
+    container_name: github-stats-server
+    restart: always
+    ports:
+      - 8063:8063
+    command: bash -c "deno install && deno task start"
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
