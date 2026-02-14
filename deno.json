@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "start": "deno run --allow-net --allow-env main.ts",
-    "dev": "deno run --allow-net --allow-env --watch main.ts"
+    "start": "deno run --allow-net --allow-env --unstable-cron main.ts",
+    "dev": "deno run --allow-net --allow-env --watch --unstable-cron main.ts"
   },
   "imports": {
     "octokit": "npm:octokit@^5.0.5"

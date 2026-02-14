@@ -418,6 +418,11 @@ async function handler(req: Request): Promise<Response> {
 }
 
 if (import.meta.main) {
+  Deno.cron("update elyor04 stats", "1,31 * * * *", async () => {
+    await getUserStats("elyor04", true);
+    await getLanguageStats("elyor04", true);
+  })
+
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   Deno.serve({ port: PORT }, handler);
 }
