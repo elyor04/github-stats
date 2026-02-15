@@ -418,15 +418,9 @@ async function handler(req: Request): Promise<Response> {
 }
 
 if (import.meta.main) {
-  Deno.cron("update elyor04 stats", "* * * * *", async () => {
-    const cachedUserStats = getFromCache("user-stats-elyor04-private");
-    if (!cachedUserStats) {
-      await getUserStats("elyor04", true);
-    }
-    const cachedLangStats = getFromCache("lang-stats-elyor04-private");
-    if (!cachedLangStats) {
-      await getLanguageStats("elyor04", true);
-    }
+  Deno.cron("update elyor04 stats", "*/5 * * * *", async () => {
+    await getUserStats("elyor04", true);
+    await getLanguageStats("elyor04", true);
   })
 
   console.log(`🚀 Server running on http://localhost:${PORT}`);
