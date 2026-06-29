@@ -1,11 +1,11 @@
 services:
   github-stats:
-    image: denoland/deno:2.6.9
+    image: golang:1.22
     container_name: github-stats-server
     restart: always
     ports:
       - "127.0.0.1:8063:8063"
-    command: bash -c "deno install && deno task start"
+    command: bash -c "go run main.go"
     working_dir: /app
     volumes:
       - .:/app

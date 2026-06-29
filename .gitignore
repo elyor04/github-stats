@@ -1,3 +1,4 @@
 *.DS_Store
 *.lock
 *.env
+/github-stats
