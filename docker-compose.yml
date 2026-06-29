@@ -1,11 +1,11 @@
 services:
   github-stats:
-    image: golang:1.22
+    image: golang:1.25
     container_name: github-stats-server
     restart: always
     ports:
       - "127.0.0.1:8063:8063"
-    command: bash -c "go run main.go"
+    command: bash -c "go mod download && go run ."
     working_dir: /app
     volumes:
       - .:/app
