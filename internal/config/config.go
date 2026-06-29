@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/viper"
 )
@@ -17,10 +18,14 @@ func Load() (*Config, error) {
 	v.SetConfigType("env")
 	v.AutomaticEnv()
 	v.SetDefault("PORT", "8000")
+	v.BindEnv("GITHUB_TOKEN")
+	v.BindEnv("PORT")
 
 	if err := v.ReadInConfig(); err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
-			return nil, fmt.Errorf("reading config: %w", err)
+		if !os.IsNotExist(err) {
+			if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+				return nil, fmt.Errorf("reading config: %w", err)
+			}
 		}
 	}
 
