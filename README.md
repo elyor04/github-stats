@@ -2,6 +2,8 @@
 
 A small HTTP service that generates GitHub profile stats and language usage as SVG images (and JSON), similar to GitHub readme stats cards.
 
+This is the **Go** rewrite of the service. The original Deno/TypeScript implementation lives on the [`deno`](https://github.com/elyor04/github-stats/tree/deno) branch.
+
 ## Endpoints
 
 | Path             | Description                                  |
